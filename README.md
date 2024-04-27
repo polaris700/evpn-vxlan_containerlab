@@ -17,7 +17,14 @@ Containerlab ネットワークを作成
 $ sudo containerlab deploy -t clab.yaml
 ```
 
+
 ネットワークの状態を確認
+
+Leaf01 に接続
+```
+$ sudo docker exec -it clab-evpn-leaf01 /usr/bin/vtysh
+```
+
 
 Routing Table
 
@@ -40,7 +47,7 @@ C>* 10.0.0.0/30 is directly connected, eth1, 00:03:20
 O>* 10.0.0.4/30 [110/20] via 10.0.0.2, eth1, weight 1, 00:02:25
 ```
 
-BGP
+BGP 経路確認
 
 ```
 leaf01# show bgp l2vpn evpn summary
@@ -56,6 +63,9 @@ Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down Sta
 
 Total number of neighbors 1
 ```
+
+
+経路確認
 
 ```
 leaf01# show bgp l2vpn evpn route
@@ -90,8 +100,49 @@ Displayed 4 prefixes (4 paths)
 
 ```
 
+# パケット確認
+host01に接続
+```
+sudo docker exec -it clab-evpn-host01 /bin/bash
+
+host01:/#
+```
+
+host02(192.168.0.2)宛にping を打つ
+
+```
+host01:/# ping 192.168.0.2
+PING 192.168.0.2 (192.168.0.2) 56(84) bytes of data.
+64 bytes from 192.168.0.2: icmp_seq=1 ttl=64 time=0.395 ms
+64 bytes from 192.168.0.2: icmp_seq=2 ttl=64 time=0.191 ms
+# <<中略>>
+```
+
+leaf01にてspine01向けIFでtcpdumpを実行
+```
+ sudo docker exec -it clab-evpn-leaf01 /bin/bash
+
+```
+
+```
+ bash-5.1# tcpdump -i eth1 -w sample.pcap
+```
+
+pcapファイルをホストにコピー
+```
+ sudo docker cp clab-evpn-leaf01:/sample.pcap .
+```
+
+元のパケット(Src IP: 192.168.0.1, Dst IP: 192.168.0.2) がVXLAN(Src IP: 10.0.0.1, Dst IP: 1.1.1.2)でencapされていることがわかります。
+
+![sample-pcap.png](figure/sample-pcap.png)
 
 
+
+
+# 参考
+
+[VXLAN: BGP EVPN with FRR](https://vincent.bernat.ch/en/blog/2017-vxlan-bgp-evpn)
 
 
 
