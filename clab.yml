@@ -1,0 +1,50 @@
+name: evpn
+topology:
+  nodes:
+    leaf01:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/leaf01.conf:/etc/frr/frr.conf
+        - configs/leaf01-start.sh:/start.sh
+      exec:
+        - bash /start.sh
+
+    leaf02:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/leaf02.conf:/etc/frr/frr.conf
+        - configs/leaf02-start.sh:/start.sh
+      exec:
+        - bash /start.sh
+
+    spine01:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/spine01.conf:/etc/frr/frr.conf
+    host01:
+      kind: linux
+      image: wbitt/network-multitool:latest
+      exec:
+        - ip addr add 192.168.0.1/24 dev eth1
+        - ip link set eth1 address 52:54:00:bb:02:00
+
+    host02:
+      kind: linux
+      image: wbitt/network-multitool:latest
+      exec:
+        - ip addr add 192.168.0.2/24 dev eth1
+        - ip link set eth1 address 52:54:00:bb:04:00
+  links:
+    # fabric
+    - endpoints: ["leaf01:eth1", "spine01:eth1"]
+    - endpoints: ["leaf02:eth1", "spine01:eth2"]
+      
+    # extarnal
+    - endpoints: ["host01:eth1", "leaf01:eth2"]      
+    - endpoints: ["host02:eth1", "leaf02:eth2"]      
