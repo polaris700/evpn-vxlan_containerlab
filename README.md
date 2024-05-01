@@ -1,5 +1,7 @@
 # Topology
 
+![topology.png](figure/topology.png)
+
 
 # Containerlab install
 
