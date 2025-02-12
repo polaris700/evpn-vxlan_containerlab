@@ -1,4 +1,0 @@
-3: vxlan100: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1500 qdisc noqueue master br100 state UNKNOWN mode DEFAULT group default qlen 1000
-    link/ether ee:ba:77:ac:bf:15 brd ff:ff:ff:ff:ff:ff promiscuity 2 minmtu 68 maxmtu 65535 
-    vxlan id 100 srcport 0 0 dstport 4789 ttl auto ageing 300 nolearning 
-    bridge_slave state forwarding priority 32 cost 100 hairpin off guard off root_block off fastleave off learning on flood on port_id 0x8002 port_no 0x2 designated_port 32770 designated_cost 0 designated_bridge 8000.AA:C1:AB:70:00:81 designated_root 8000.AA:C1:AB:70:00:81 hold_timer    0.00 message_age_timer    0.00 forward_delay_timer    0.00 topology_change_ack 0 config_pending 0 proxy_arp off proxy_arp_wifi off mcast_router 1 mcast_fast_leave off mcast_flood on bcast_flood on mcast_to_unicast off neigh_suppress off group_fwd_mask 0 group_fwd_mask_str 0x0 vlan_tunnel off isolated off numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 
