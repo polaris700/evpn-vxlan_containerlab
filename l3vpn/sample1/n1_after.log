@@ -1,0 +1,77 @@
+N1 ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet 1.1.1.1/32 brd 1.1.1.1 scope global lo
+       valid_lft forever preferred_lft forever
+2: green: <NOARP,MASTER,UP,LOWER_UP> mtu 65575 qdisc noqueue state UP group default qlen 1000
+    link/ether f6:89:34:f0:86:08 brd ff:ff:ff:ff:ff:ff
+3: br100: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master green state UP group default qlen 1000
+    link/ether aa:c1:ab:70:00:01 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.1/24 scope global br100
+       valid_lft forever preferred_lft forever
+4: vxlan100: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1500 qdisc noqueue master br100 state UNKNOWN group default qlen 1000
+    link/ether 0a:8d:b6:41:53:f1 brd ff:ff:ff:ff:ff:ff
+26: eth0@if27: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:ac:14:14:05 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.20.20.5/24 brd 172.20.20.255 scope global eth0
+       valid_lft forever preferred_lft forever
+32: eth1@if33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9500 qdisc noqueue state UP group default 
+    link/ether aa:c1:ab:e3:0a:b8 brd ff:ff:ff:ff:ff:ff link-netnsid 1
+    inet 10.0.0.1/24 brd 10.0.0.255 scope global eth1
+       valid_lft forever preferred_lft forever
+36: eth2@if37: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9500 qdisc noqueue master br100 state UP group default 
+    link/ether aa:c1:ab:71:00:a1 brd ff:ff:ff:ff:ff:ff link-netnsid 2
+N1 show bgp
+
+IPv4 Unicast Summary:
+BGP router identifier 1.1.1.1, local AS number 65000 VRF default vrf-id 0
+BGP table version 0
+RIB entries 0, using 0 bytes of memory
+Peers 1, using 13 KiB of memory
+Peer groups 1, using 64 bytes of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+1.1.1.2         4      65000         5         5        0    0    0 00:00:33            0        0 FRRouting/10.0_git
+
+Total number of neighbors 1
+
+L2VPN EVPN Summary:
+BGP router identifier 1.1.1.1, local AS number 65000 VRF default vrf-id 0
+BGP table version 0
+RIB entries 3, using 288 bytes of memory
+Peers 1, using 13 KiB of memory
+Peer groups 1, using 64 bytes of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+1.1.1.2         4      65000         5         5        2    0    0 00:00:33            2        2 FRRouting/10.0_git
+
+Total number of neighbors 1
+N1 show bgp l2vpn evpn
+BGP table version is 2, local router ID is 1.1.1.1
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
+Origin codes: i - IGP, e - EGP, ? - incomplete
+EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]:[Frag-id]
+EVPN type-2 prefix: [2]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
+EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
+EVPN type-4 prefix: [4]:[ESI]:[IPlen]:[OrigIP]
+EVPN type-5 prefix: [5]:[EthTag]:[IPlen]:[IP]
+
+   Network          Next Hop            Metric LocPrf Weight Path
+Route Distinguisher: 192.168.1.1:2
+ *> [5]:[0]:[24]:[192.168.1.0]
+                    0.0.0.0                  0             0 65001 ?
+                    ET:8 RT:65000:100 Rmac:aa:c1:ab:70:00:01
+ *> [5]:[0]:[32]:[100.0.0.1]
+                    0.0.0.0                  0             0 65001 ?
+                    ET:8 RT:65000:100 Rmac:aa:c1:ab:70:00:01
+Route Distinguisher: 192.168.2.1:2
+ *>i[5]:[0]:[24]:[192.168.2.0]
+                    1.1.1.2                  0    100      0 65002 ?
+                    RT:65000:100 ET:8 Rmac:aa:c1:ab:70:00:02
+ *>i[5]:[0]:[32]:[100.0.0.2]
+                    1.1.1.2                  0    100      0 65002 ?
+                    RT:65000:100 ET:8 Rmac:aa:c1:ab:70:00:02
+
+Displayed 4 out of 4 total prefixes
