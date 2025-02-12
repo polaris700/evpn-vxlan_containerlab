@@ -1,0 +1,70 @@
+hostname leaf03
+
+log file /var/log/frr/frr.log
+log stdout notifications
+# log monitor notifications
+log commands
+!
+# !debug bgp neighbor-events
+debug bgp zebra
+
+vrf CUSTA
+  vni 100
+
+
+interface eth0
+ shutdown
+
+interface lo
+ ip address 1.1.1.3/32
+ ip ospf area 0.0.0.0
+ 
+
+interface eth1
+ ip address 10.0.0.9/30
+ ip ospf area 0.0.0.0
+
+interface eth2
+ ip address 192.168.1.1/24
+
+ip prefix-list all_permit seq 5 permit any
+
+router ospf
+  ospf router-id 1.1.1.3
+  router-info area 0.0.0.0
+  passive-interface lo
+
+
+router bgp 65000
+  neighbor fabric peer-group
+  neighbor fabric remote-as 65000
+  neighbor fabric capability extended-nexthop
+  neighbor fabric update-source 1.1.1.3
+  neighbor 1.1.1.254 peer-group fabric
+
+  address-family l2vpn evpn
+    neighbor fabric activate
+    advertise-all-vni
+    advertise ipv4 unicast
+  exit-address-family
+
+router bgp 65000 vrf CUSTA
+  neighbor external peer-group
+  neighbor external remote-as 65001
+  neighbor 192.168.1.2 peer-group external
+
+  address-family ipv4 unicast
+   neighbor external prefix-list all_permit in
+   neighbor external prefix-list all_permit out
+   rd vpn export 65000:100
+   rt vpn both 65000:100
+   import vpn
+   export vpn
+  exit-address-family
+
+  address-family l2vpn evpn
+   advertise ipv4 unicast
+  exit-address-family
+  
+
+

@@ -1,0 +1,69 @@
+2025/02/01 07:29:27 BGP: [Z1RP6-0X3QJ] Creating Default VRF, AS 65000
+2025/02/01 07:29:27 BGP: [TTAN7-16X9N] dup addr detect enable max_moves 5 time 180 freeze disable freeze_time 0
+2025/02/01 07:29:27 BGP: [ZZKY3-FX5JH] bgp_get: Registering BGP instance VRF default to zebra
+2025/02/01 07:29:27 BGP: [TNK7N-FJF7K] Registering VRF 0
+2025/02/01 07:29:27 BGP: [HKBB3-YX6A9] Rx Intf add VRF 0 IF br100
+2025/02/01 07:29:27 BGP: [HKBB3-YX6A9] Rx Intf add VRF 0 IF eth0
+2025/02/01 07:29:27 BGP: [GYPW0-GVZQ8] Rx Intf address add VRF 0 IF eth0 addr 172.20.20.3/24
+2025/02/01 07:29:27 BGP: [HKBB3-YX6A9] Rx Intf add VRF 0 IF eth1
+2025/02/01 07:29:27 BGP: [HKBB3-YX6A9] Rx Intf add VRF 0 IF eth2
+2025/02/01 07:29:27 BGP: [HKBB3-YX6A9] Rx Intf add VRF 0 IF lo
+2025/02/01 07:29:27 BGP: [HKBB3-YX6A9] Rx Intf add VRF 0 IF vxlan100
+2025/02/01 07:29:27 ZEBRA: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00
+2025/02/01 07:29:27 ZEBRA: [G6NKK-8C6DV] end_config: VTY:0x7f9ac6c384a0, pending SET-CFG: 0
+2025/02/01 07:29:27 MGMTD: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00
+2025/02/01 07:29:27 MGMTD: [G6NKK-8C6DV] end_config: VTY:0x7ff2938bd170, pending SET-CFG: 6
+2025/02/01 07:29:27 BGP: [KGTKH-FVHEW] Rx Router Id update VRF 0 Id 1.1.1.1/32
+2025/02/01 07:29:27 BGP: [WMCA1-27995] RID change : vrf VRF default(0), RTR ID 1.1.1.1
+2025/02/01 07:29:27 BGP: [GYPW0-GVZQ8] Rx Intf address add VRF 0 IF lo addr 1.1.1.1/32
+2025/02/01 07:29:27 BGP: [GYPW0-GVZQ8] Rx Intf address add VRF 0 IF eth1 addr 10.0.0.1/24
+2025/02/01 07:29:27 BGP: [TV0XP-3WR0A] Rx VNI add VRF default VNI 100 tenant-vrf default SVI ifindex 2
+2025/02/01 07:29:27 BGP: [M3X4Y-24DVB] VRF default vni 100 type-3 route evp [3]:[0]:[32]:[1.1.1.1] RMAC 00:00:00:00:00:00 nexthop 1.1.1.1 esi (null)
+2025/02/01 07:29:27 BGP: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00
+2025/02/01 07:29:27 BGP: [G6NKK-8C6DV] end_config: VTY:0x7fc504f663b0, pending SET-CFG: 0
+2025/02/01 07:29:27 STATIC: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00
+2025/02/01 07:29:27 STATIC: [G6NKK-8C6DV] end_config: VTY:0x7ffa0a16d020, pending SET-CFG: 0
+2025/02/01 07:29:27 ISIS: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00
+2025/02/01 07:29:27 ISIS: [G6NKK-8C6DV] end_config: VTY:0x7f06d2ec4030, pending SET-CFG: 0
+2025/02/01 07:29:28 ZEBRA: [YDG3W-JND95] FD Limit set: 1048576 is stupidly large.  Is this what you intended?  Consider using --limit-fds also limiting size to 100000
+2025/02/01 07:29:28 ZEBRA: [V98V0-MTWPF] client 50 says hello and bids fair to announce only bgp routes vrf=0
+2025/02/01 07:29:28 BGP: [HXW3G-K1M2A] sendmsg_zebra_rnh: sending cmd ZEBRA_NEXTHOP_REGISTER for 1.1.1.2/32 (vrf VRF default)
+2025/02/01 07:29:28 BGP: [GYPW0-GVZQ8] Rx Intf address add VRF 0 IF eth2 addr fe80::a8c1:abff:fe62:ad91/64
+2025/02/01 07:29:28 BGP: [JSYCM-MV07M] 0:Recv MACIP Add f 0x10 MAC aa:c1:ab:70:00:01 IP fe80::a8c1:abff:fe70:1 VNI 100 seq 0 state 0 ESI 00:00:00:00:00:00:00:00:00:00
+2025/02/01 07:29:28 BGP: [M3X4Y-24DVB] VRF default vni 100 type-2 route evp [2]:[0]:[48]:[aa:c1:ab:70:00:01]:[128]:[fe80::a8c1:abff:fe70:1] RMAC 00:00:00:00:00:00 nexthop 1.1.1.1 esi 00:00:00:00:00:00:00:00:00:00
+2025/02/01 07:29:28 BGP: [GYPW0-GVZQ8] Rx Intf address add VRF 0 IF br100 addr fe80::a8c1:abff:fe70:1/64
+2025/02/01 07:29:28 BGP: [GYPW0-GVZQ8] Rx Intf address add VRF 0 IF eth1 addr fe80::a8c1:abff:fee0:3f58/64
+2025/02/01 07:29:28 BGP: [GYPW0-GVZQ8] Rx Intf address add VRF 0 IF vxlan100 addr fe80::8cf3:22ff:fe52:f50a/64
+2025/02/01 07:29:42 ZEBRA: [WPPMZ-G9797] if_zebra_speed_update: br100 old speed: 0 new speed: 10000
+2025/02/01 07:29:42 BGP: [HKBB3-YX6A9] Rx Intf add VRF 0 IF br100
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 1 safi: 1 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 1 safi: 2 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 1 safi: 3 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 1 safi: 4 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 1 safi: 5 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 1 safi: 6 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 1 safi: 7 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 2 safi: 1 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 2 safi: 2 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 2 safi: 3 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 2 safi: 4 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 2 safi: 5 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 2 safi: 6 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 2 safi: 7 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 3 safi: 1 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 3 safi: 2 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 3 safi: 3 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 3 safi: 4 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 3 safi: 5 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 3 safi: 6 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:29:58 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 3 safi: 7 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:30:00 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 1 safi: 1 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:30:00 BGP: [M59KS-A3ZXZ] bgp_update_receive: rcvd End-of-RIB for IPv4 Unicast from 1.1.1.2 in vrf default
+2025/02/01 07:30:00 BGP: [SCHS5-AK960] Tx ADD MACIP, VNI 100 MAC aa:c1:ab:70:00:02 IP (null) flags 0x0 seq 0 remote VTEP 1.1.1.2 esi -
+2025/02/01 07:30:00 BGP: [SCHS5-AK960] Tx ADD MACIP, VNI 100 MAC aa:c1:ab:70:00:02 IP fe80::a8c1:abff:fe70:2 flags 0x0 seq 0 remote VTEP 1.1.1.2 esi -
+2025/02/01 07:30:00 BGP: [RNME6-H71V5] Tx ADD Remote VTEP, VNI 100 remote VTEP 1.1.1.2
+2025/02/01 07:30:00 BGP: [RF7DJ-R0V7Z] bgp_zebra_update: VRF default afi: 3 safi: 5 Command ZEBRA_CLIENT_ROUTE_UPDATE_COMPLETE
+2025/02/01 07:30:00 BGP: [M59KS-A3ZXZ] bgp_update_receive: rcvd End-of-RIB for L2VPN EVPN from 1.1.1.2 in vrf default
+2025/02/01 07:30:19 BGP: [JSYCM-MV07M] 0:Recv MACIP Add f 0x0 MAC 52:54:00:bb:00:01 IP (null) VNI 100 seq 0 state 0 ESI 00:00:00:00:00:00:00:00:00:00
+2025/02/01 07:30:19 BGP: [M3X4Y-24DVB] VRF default vni 100 type-2 route evp [2]:[0]:[48]:[52:54:00:bb:00:01] RMAC 00:00:00:00:00:00 nexthop 1.1.1.1 esi 00:00:00:00:00:00:00:00:00:00
+2025/02/01 07:30:19 BGP: [SCHS5-AK960] Tx ADD MACIP, VNI 100 MAC 52:54:00:bb:00:02 IP (null) flags 0x0 seq 0 remote VTEP 1.1.1.2 esi -

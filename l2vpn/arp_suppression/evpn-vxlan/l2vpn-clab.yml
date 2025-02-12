@@ -1,0 +1,74 @@
+name: evpn-l2vpn
+topology:
+  nodes:
+    # Leaf
+    N1:
+      kind: linux
+      image: lab_frr:10.0.0
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/N1.conf:/etc/frr/frr.conf
+        - configs/N1-start.sh:/start.sh
+      exec:
+        - bash /start.sh
+
+    N2:
+      kind: linux
+      image: lab_frr:10.0.0
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/N2.conf:/etc/frr/frr.conf
+        - configs/N2-start.sh:/start.sh
+      exec:
+        - bash /start.sh
+
+# Other
+    host01:
+      kind: linux
+      image: wbitt/network-multitool:latest
+      exec:
+        - sysctl -w net.ipv6.conf.all.disable_ipv6=1
+        - sysctl -w net.ipv6.conf.default.disable_ipv6=1
+        - ip addr add 192.168.0.1/24 dev eth1
+        - ip link set eth1 address 52:54:00:bb:00:01
+        - ip link set dev eth0 down
+
+    host02:
+      kind: linux
+      image: wbitt/network-multitool:latest
+      exec:
+        - sysctl -w net.ipv6.conf.all.disable_ipv6=1
+        - sysctl -w net.ipv6.conf.default.disable_ipv6=1
+        - ip addr add 192.168.0.2/24 dev eth1
+        - ip link set eth1 address 52:54:00:bb:00:02
+        - ip link set dev eth0 down
+
+    host03:
+      kind: linux
+      image: wbitt/network-multitool:latest
+      exec:
+        - sysctl -w net.ipv6.conf.all.disable_ipv6=1
+        - sysctl -w net.ipv6.conf.default.disable_ipv6=1
+        - ip addr add 192.168.0.3/24 dev eth1
+        - ip link set eth1 address 52:54:00:bb:00:03
+        - ip link set dev eth0 down
+
+    host04:
+      kind: linux
+      image: wbitt/network-multitool:latest
+      exec:
+        - sysctl -w net.ipv6.conf.all.disable_ipv6=1
+        - sysctl -w net.ipv6.conf.default.disable_ipv6=1
+        - ip addr add 192.168.0.4/24 dev eth1
+        - ip link set eth1 address 52:54:00:bb:00:04
+        - ip link set dev eth0 down
+        
+  links:
+    # fabric
+    - endpoints: ["N1:eth1", "N2:eth1"]
+      
+    # extarnal
+    - endpoints: ["N1:eth2", "host01:eth1"]      
+    - endpoints: ["N1:eth3", "host02:eth1"]      
+    - endpoints: ["N2:eth2", "host03:eth1"]      
+    - endpoints: ["N2:eth3", "host04:eth1"]      

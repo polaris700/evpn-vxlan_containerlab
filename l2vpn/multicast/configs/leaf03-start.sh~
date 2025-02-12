@@ -1,0 +1,32 @@
+sysctl -w net.ipv4.ip_forward=1
+
+
+# ip link add br200 type bridge
+# ip link set dev br200 up
+# ip link add vxlan200 type vxlan id 200 dstport 4789 nolearning
+# ip link set dev eth2 master br200
+# ip link set dev eth2 promisc on
+# ip link set dev eth2 up
+# ip link set dev vxlan200 master br200
+# ip link set dev vxlan200 promisc on
+# ip link set dev vxlan200 up
+
+
+## ip-vrf CUSTA / l3vni 200
+ip link add CUSTA type vrf table 200
+ip link set CUSTA up
+
+ip link add br200 type bridge
+# ip link set br200 master CUSTA addrgenmode none
+ip link set br200 addr aa:bb:cc:00:00:64
+ip link set br200 up
+
+ip link add vxlan200 type vxlan id 200 dstport 4789 nolearning
+ip link set vxlan200 master br200 addrgenmode none
+ip link set vxlan200 type bridge_slave neigh_suppress on learning off
+ip link set vxlan200 up
+
+
+ip link set eth2 master CUSTA
+ip link set br200 master CUSTA
+

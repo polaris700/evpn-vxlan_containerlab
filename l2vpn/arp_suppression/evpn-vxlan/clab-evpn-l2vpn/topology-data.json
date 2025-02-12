@@ -1,0 +1,363 @@
+{
+  "name": "evpn-l2vpn",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-9b18ebd77e32",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "N1": {
+      "index": "0",
+      "shortname": "N1",
+      "longname": "clab-evpn-l2vpn-N1",
+      "fqdn": "N1.evpn-l2vpn.io",
+      "group": "",
+      "labdir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/N1",
+      "kind": "linux",
+      "image": "lab_frr:10.0.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9b18ebd77e32",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/N1",
+        "clab-node-name": "N1",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/l2vpn-clab.yml",
+        "containerlab": "evpn-l2vpn"
+      },
+      "port-bindings": [
+      ]
+    },
+    "N2": {
+      "index": "1",
+      "shortname": "N2",
+      "longname": "clab-evpn-l2vpn-N2",
+      "fqdn": "N2.evpn-l2vpn.io",
+      "group": "",
+      "labdir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/N2",
+      "kind": "linux",
+      "image": "lab_frr:10.0.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9b18ebd77e32",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/N2",
+        "clab-node-name": "N2",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/l2vpn-clab.yml",
+        "containerlab": "evpn-l2vpn"
+      },
+      "port-bindings": [
+      ]
+    },
+    "host01": {
+      "index": "2",
+      "shortname": "host01",
+      "longname": "clab-evpn-l2vpn-host01",
+      "fqdn": "host01.evpn-l2vpn.io",
+      "group": "",
+      "labdir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/host01",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9b18ebd77e32",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/host01",
+        "clab-node-name": "host01",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/l2vpn-clab.yml",
+        "containerlab": "evpn-l2vpn"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "host02": {
+      "index": "3",
+      "shortname": "host02",
+      "longname": "clab-evpn-l2vpn-host02",
+      "fqdn": "host02.evpn-l2vpn.io",
+      "group": "",
+      "labdir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/host02",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9b18ebd77e32",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/host02",
+        "clab-node-name": "host02",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/l2vpn-clab.yml",
+        "containerlab": "evpn-l2vpn"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "host03": {
+      "index": "4",
+      "shortname": "host03",
+      "longname": "clab-evpn-l2vpn-host03",
+      "fqdn": "host03.evpn-l2vpn.io",
+      "group": "",
+      "labdir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/host03",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9b18ebd77e32",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/host03",
+        "clab-node-name": "host03",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/l2vpn-clab.yml",
+        "containerlab": "evpn-l2vpn"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "host04": {
+      "index": "5",
+      "shortname": "host04",
+      "longname": "clab-evpn-l2vpn-host04",
+      "fqdn": "host04.evpn-l2vpn.io",
+      "group": "",
+      "labdir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/host04",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9b18ebd77e32",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/clab-evpn-l2vpn/host04",
+        "clab-node-name": "host04",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/keita/bof/evpn-vxlan/l2vpn/arp_suppression/evpn-vxlan/l2vpn-clab.yml",
+        "containerlab": "evpn-l2vpn"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "N1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:26:75:d7",
+        "peer": "z"
+      },
+      "z": {
+        "node": "N2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:df:43:df",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "N1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:b7:e5:0c",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:b7:a4:89",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "N1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:c0:89:af",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host02",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:be:f8:c8",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "N2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:0c:77:80",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host03",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:d3:f5:14",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "N2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:d2:29:90",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host04",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:36:0d:dd",
+        "peer": "a"
+      }
+    }
+  ]
+}
